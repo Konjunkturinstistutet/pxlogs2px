@@ -1,0 +1,8 @@
+Package: pxlogs2px
+Title: PX Logs to PX files
+Version: 0.1
+Date: 2018-10-26
+Author: Torbjorn Lindquist
+Maintainer: Torbjorn Lindquist <Torbjorn.Lindquist@konj.se>
+Description: Creates PX-files from PX-Web logs.
+License: GPL-3
