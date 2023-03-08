@@ -9,6 +9,7 @@ library(readr)
 library(stringr)
 library(plyr)
 library(data.table)
+library(pxR)
 
 filenames = dir(path="C:/logs/stats/",full.names = TRUE)
 stats <- data.frame (Time=character(),
@@ -46,6 +47,9 @@ stats[,"Table1"] <- gsub(".*[\\]","A/",as.matrix(stats[,"TableID"]))
 stats[,"Table"] <- gsub(".*/","",as.matrix(stats[,"Table1"]))
 
 statsoutput <- count(stats,c('Database','Table','Language','Year','Month','ActionType','ActionName','Context'))
+names(statsoutput)[names(statsoutput) == 'freq'] <- 'value'
 
 write_csv(statsoutput,"C:/logs/statsoutput.csv",na="NA", append = FALSE, col_names = TRUE)
 
+statspx <- as.px(statsoutput)
+write.px(statspx,"c:/logs/statsoutput.px")
